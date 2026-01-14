@@ -9,7 +9,7 @@ process megahit {
         tuple val(id), path(reads1), path(reads2)
 
     output:
-        tuple val(id), path("assembly/${id}/${id}_nextreo_contigs.fa"), emit: contigs
+        tuple val(id), path("assembly/${id}/${id}_metanextreo_contigs.fa"), emit: contigs
 
     script:
     """
@@ -37,6 +37,6 @@ process megahit {
     fi
 
     # After assembly, rename the contig headers using the Python script
-    python3 ${projectDir}/bin/rename_contigs.py -i assembly/${id}/${id}.contigs.fa -o assembly/${id}/${id}_nextreo_contigs.fa
+    python3 ${projectDir}/bin/rename_contigs.py -i assembly/${id}/${id}.contigs.fa -o assembly/${id}/${id}_metanextreo_contigs.fa
     """
 }

@@ -2,7 +2,7 @@
 nextflow.enable.dsl=2
 
 /*
-* Nextflow -- Avian Orthoreovirus Analysis Pipeline
+* MetaNextReo -- Metagenomic Nextflow Pipeline for Tracking Reovirus and Orthoreoviruses
 * Author: naveen.duhan@outlook.com
 */
 
@@ -46,12 +46,12 @@ workflow {
         exit 1, 'Input samplesheet not specified!' 
     }
 
-    // Run the Nextreo sub-workflow
-    Nextreo(ch_input)
+    // Run the MetaNextReo sub-workflow
+    MetaNextReo(ch_input)
 }
 
-// Sub-workflow: Nextreo
-workflow Nextreo {
+// Sub-workflow: MetaNextReo
+workflow MetaNextReo {
     take:
         ch_input
 
@@ -79,14 +79,15 @@ def helpMSG() {
     println """
     ____________________________________________________________________________________________
 
-                                nextreo: Avian Orthoreovirus Analysis Pipeline
+                                MetaNextReo: Metagenomic Nextflow Pipeline for 
+                                Tracking Reovirus and Orthoreoviruses
 
                                 Author : Naveen Duhan (naveen.duhan@outlook.com)
     ____________________________________________________________________________________________
 
     Usage example:
 
-    nextflow run nextreo.nf [options] --input <sample file /samplesheet> --outdir <output_directory>
+    nextflow run metanextreo.nf [options] --input <sample file /samplesheet> --outdir <output_directory>
 
     Options:
     --input      Path to the input samplesheet (mandatory)
